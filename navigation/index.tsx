@@ -123,7 +123,21 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
       signIn: async (email: string, password: string) => {
         // just for test
         console.log("memo here")
-        const token = (email === password) ? "testtoken": ''
+        const loginRes = await fetch("http://localhost:5000/mobile/api/login", {
+          method: "POST",
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password
+          })
+        })
+
+        const tokenRes = await loginRes.json()
+        const token = tokenRes.token
+        
         dispatch({type: 'SIGN_IN', token});
         await setToken(token);
       },

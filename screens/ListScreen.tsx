@@ -16,8 +16,11 @@ export default function ListScreen({navigation} : {navigation: any}) {
     useEffect(() => {
         console.log("Token: " + authToken)
         async function loadDeviceListAsync() {
-            const listRes = await fetch("http://localhost:5000/api/cells", {
-                method: "GET"
+            const listRes = await fetch("http://localhost:5000/mobile/api/cells", {
+                method: "GET",
+                headers: {
+                    Authorization: 'Bearer ' + authToken
+                }
             })
             const list = await listRes.json()
             

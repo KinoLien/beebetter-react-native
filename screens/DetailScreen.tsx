@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { AuthContext } from '../components/AuthProvider';
 import { FlatList, Platform, StyleSheet, ActivityIndicator } from 'react-native';
 import { Text, View } from '../components/Themed';
 
 export default function DetailScreen({ route, navigation } : { route: any, navigation: any}) {
-
+    const { authToken } = useContext(AuthContext)
     const { cellId } = route.params;
 
     const showProperties = [
@@ -18,8 +19,11 @@ export default function DetailScreen({ route, navigation } : { route: any, navig
 
     useEffect(() => {
         async function loadCellDataAsync() {            
-            const dataRes = await fetch(`http://localhost:5000/api/cells/${cellId}/latest`, {
-                method: "GET"
+            const dataRes = await fetch(`http://localhost:5000/mobile/api/cells/${cellId}/latest`, {
+                method: "GET",
+                headers: {
+                    Authorization: 'Bearer ' + authToken
+                }
             })
             const data = await dataRes.json()
 
