@@ -12,6 +12,7 @@ declare global {
 }
 
 export type RootStackParamList = {
+  SignIn: undefined;
   List: undefined;
   Detail: undefined;
 };

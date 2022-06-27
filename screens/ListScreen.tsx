@@ -1,20 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FlatList, Platform, StyleSheet, Pressable } from 'react-native';
-import { useAuthorization } from '../components/AuthProvider';
+import { AuthContext } from '../components/AuthProvider';
 import { Text, View } from '../components/Themed';
 import { ActivityIndicator } from "react-native";
 
 export default function ListScreen({navigation} : {navigation: any}) {
-    const provider = useAuthorization()
-    // console.log(provider.status)
-
+    const { authToken } = useContext(AuthContext)
+    
     const [deviceListState, setDeviceListState] = useState({
         isLoading: true,
         deviceList: Array<string>()
     })
 
     useEffect(() => {
+        console.log("Token: " + authToken)
         async function loadDeviceListAsync() {
             const listRes = await fetch("http://localhost:5000/api/cells", {
                 method: "GET"
