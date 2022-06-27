@@ -19,7 +19,7 @@ export default function DetailScreen({ route, navigation } : { route: any, navig
 
     useEffect(() => {
         async function loadCellDataAsync() {            
-            const dataRes = await fetch(`http://localhost:5000/mobile/api/cells/${cellId}/latest`, {
+            const dataRes = await fetch(`https://console.beebetter.io/mobile/api/cells/${cellId}/latest`, {
                 method: "GET",
                 headers: {
                     Authorization: 'Bearer ' + authToken

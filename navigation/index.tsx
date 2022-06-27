@@ -123,7 +123,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
       signIn: async (email: string, password: string) => {
         // just for test
         console.log("memo here")
-        const loginRes = await fetch("http://localhost:5000/mobile/api/login", {
+        const loginRes = await fetch("https://console.beebetter.io/mobile/api/login", {
           method: "POST",
           headers: {
             Accept: 'application/json',

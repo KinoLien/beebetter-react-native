@@ -16,7 +16,7 @@ export default function ListScreen({navigation} : {navigation: any}) {
     useEffect(() => {
         console.log("Token: " + authToken)
         async function loadDeviceListAsync() {
-            const listRes = await fetch("http://localhost:5000/mobile/api/cells", {
+            const listRes = await fetch("https://console.beebetter.io/mobile/api/cells", {
                 method: "GET",
                 headers: {
                     Authorization: 'Bearer ' + authToken
