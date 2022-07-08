@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "beebetter-react-expo",
+    "name": "BeeBetter",
     "slug": "beebetter-react-expo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/bee-honey-icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -25,7 +25,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.gorilla.beebetter",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/images/favicon.png"

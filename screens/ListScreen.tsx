@@ -10,7 +10,7 @@ export default function ListScreen({navigation} : {navigation: any}) {
     
     const [deviceListState, setDeviceListState] = useState({
         isLoading: true,
-        deviceList: Array<string>()
+        deviceList: Array<{[index: string]: any}>()
     })
 
     useEffect(() => {
@@ -32,9 +32,10 @@ export default function ListScreen({navigation} : {navigation: any}) {
         loadDeviceListAsync()
     }, [])
 
-    const onDevicePress = (id: string) => {
+    const onDevicePress = (item: any) => {
         navigation.navigate('Detail', {
-            cellId: id
+            cellId: item.id,
+            cellTitle: item.name
         });
     }
  
@@ -47,7 +48,7 @@ export default function ListScreen({navigation} : {navigation: any}) {
                     ItemSeparatorComponent={() => <View style={{height: 0.5,width: '100%',backgroundColor: '#C8C8C8'}}/>}
                     renderItem={({item}) => (
                         <Pressable onPress={() => onDevicePress(item)}>
-                            <Text style={styles.item}>{item}</Text>
+                            <Text style={styles.item}>{item.name}</Text>
                         </Pressable>
                     )}
                 />

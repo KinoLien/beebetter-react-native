@@ -6,7 +6,7 @@ import { Text, View } from '../components/Themed';
 
 export default function DetailScreen({ route, navigation } : { route: any, navigation: any}) {
     const { authToken } = useContext(AuthContext)
-    const { cellId } = route.params;
+    const { cellId, cellTitle } = route.params;
 
     const showProperties = [
         "Tem1", "Hum1", "Vol1", "Weight", "Time"
@@ -33,7 +33,7 @@ export default function DetailScreen({ route, navigation } : { route: any, navig
             })
         }
         loadCellDataAsync()
-        navigation.setOptions({title: `Detail - ${cellId}` })
+        navigation.setOptions({title: `Detail - ${cellTitle}` })
     }, [])
 
     const convertValues = () => {
