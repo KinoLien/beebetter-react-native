@@ -12,6 +12,10 @@ export default function DetailScreen({ route, navigation } : { route: any, navig
         "Tem1", "Hum1", "Vol1", "Weight", "Time"
     ]
 
+    const appendSuffixes = [
+      "°C", "%", "dB", "Kg", ""
+    ]
+
     const [cellDataState, setCellDataState] = useState({
         isLoading: true,
         cellData: {} as {[index: string] : any} | null
@@ -37,10 +41,10 @@ export default function DetailScreen({ route, navigation } : { route: any, navig
     }, [])
 
     const convertValues = () => {
-        return showProperties.map(prop => {
+        return showProperties.map((prop, idx) => {
             return {
                 prop,
-                value: cellDataState.cellData ? cellDataState.cellData[prop] : ""
+                value: cellDataState.cellData ? `${cellDataState.cellData[prop]} ${appendSuffixes[idx]}` : ""
             }
         })
     }
